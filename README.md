@@ -1,0 +1,1 @@
+# Hyperskill_Frontend_05_Dog_Glossary
