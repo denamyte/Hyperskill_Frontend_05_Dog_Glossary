@@ -1,0 +1,29 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: |-
+      function hasDownloaded (value) {
+          const promise = new Promise(function(resolve, reject){
+              if (value === "true"){
+                  resolve("Now you can watch the video!");
+              } else {
+                  reject("Oops! An error occurs");
+              }
+          });
+      
+          return promise
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9995#comment
+status: Solved
+feedback:
+  message: |-
+    <html>[+] Test #1. OK
+    [+] Test #2. OK
+
+    2 of 2 test(s) passed.</html>
+  time: "Tue, 28 Nov 2023 19:17:08 UTC"
+record: -1
+submission_language: javascript

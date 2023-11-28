@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: "x = 11, y = 11, z = 11"
+  - text: "x = 12, y = 12, z = 11"
+  - text: "x = 12, y = 11, z = 12"
+  - text: "x = 11, y = 12, z = 12"
+  - text: "x = 12, y = 11, z = 11"
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/30874#comment
+status: Solved
+record: -1
+local_check: false

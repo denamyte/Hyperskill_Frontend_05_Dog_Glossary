@@ -1,0 +1,23 @@
+type: matching
+captions:
+  - .then
+  - .finally
+  - .catch
+options:
+  - used to interact with the promised output
+  - used to call the function regardless of the promise state
+  - used for error control
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9990#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2

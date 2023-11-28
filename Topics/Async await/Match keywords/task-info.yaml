@@ -1,0 +1,26 @@
+type: matching
+captions:
+  - <code>async</code>
+  - <code>await</code>
+  - <code>try</code>
+  - <code>catch</code>
+options:
+  - "When a function is declared, using this keyword makes the code asynchronous."
+  - It works only inside the async functions.
+  - It only executes if the Promise is rejected.
+  - It is executed and completed successfully if the Promise is resolved.
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27929#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

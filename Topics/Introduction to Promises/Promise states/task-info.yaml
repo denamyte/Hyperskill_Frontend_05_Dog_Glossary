@@ -1,0 +1,23 @@
+type: matching
+captions:
+  - fulfilled
+  - pending
+  - rejected
+options:
+  - a promise has resolved
+  - a promise has rejected
+  - the initial state
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9984#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2

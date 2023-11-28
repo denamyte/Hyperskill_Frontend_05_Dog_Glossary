@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: To handle errors efficiently
+  - text: To convert a promise to a callback function and vice versa
+  - text: To access the resolved value of a promise
+  - text: To make an API request
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27933#comment
+status: Solved
+record: -1
+local_check: false

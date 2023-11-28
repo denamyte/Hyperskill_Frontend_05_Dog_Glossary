@@ -1,0 +1,1 @@
+["apple", "orange", "banana"].forEach(fruit => console.log(fruit))

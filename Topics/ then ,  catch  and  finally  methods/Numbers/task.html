@@ -1,0 +1,48 @@
+<h2>Numbers</h2>
+<div class="step-text">
+<p></p>
+<p>Write the result of promise chaining if all functions except <code class="language-javascript">number4</code> are completed successfully. </p>
+<p>Type all numbers in one row without spaces.</p>
+<p><b>Tip:</b> Pay attention to <code class="language-javascript">isSuccess</code> variable and the order of the <code class="language-javascript">log</code> executions.</p>
+<pre><code class="language-javascript">let isSuccess = true;
+
+function loadNumber() {
+  return new Promise( function(resolve, reject) {
+    if (isSuccess) {
+      resolve(1);
+    } else {
+      reject(2);
+    }
+  });
+}
+
+
+loadNumber()
+  .then( function number1(value) {
+    console.log(value);
+    return loadNumber();
+  })
+  .then( function number2(value) {
+    console.log(value);
+    return loadNumber();
+  })
+  .then( function number3(value) {
+    console.log(value);
+    return loadNumber();
+  })
+  .then( function number4(value) {
+    isSuccess = false;
+    console.log(value);
+    return loadNumber();
+  })
+  .then( function number5(value) {
+    console.log(value);
+    return loadNumber();
+  })
+  .catch( function(error) {
+    console.log(error)
+  })
+  .finally( function() {
+    console.log(3)
+  });</code></pre>
+</div>

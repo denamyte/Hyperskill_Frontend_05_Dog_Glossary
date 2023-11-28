@@ -1,0 +1,15 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: "// Write code below this line \n\n...function squareNumber(number) {\n ...\n\
+    }\n\nsquareNumber(4)\n  .then((result) => {\n...\n\n// Write code above this line"
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27932#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 28 Nov 2023 20:21:20 UTC"
+record: -1
+submission_language: javascript

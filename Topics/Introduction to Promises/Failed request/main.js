@@ -1,0 +1,1 @@
+const dataLoader = new Promise((_, reject) => reject("An error occurred"))

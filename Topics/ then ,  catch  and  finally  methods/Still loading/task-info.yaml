@@ -1,0 +1,26 @@
+type: code
+custom_name: Still loading...
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: |-
+      function loader(value) {
+          const promise = new Promise(function(resolve, reject){
+              if (value === "true"){
+                  resolve();
+              } else {
+                  reject();
+              }
+          });
+      
+          return promise;
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9996#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 28 Nov 2023 19:23:45 UTC"
+record: -1
+submission_language: javascript

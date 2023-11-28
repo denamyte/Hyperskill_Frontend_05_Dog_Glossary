@@ -1,0 +1,57 @@
+<h2>Async/await</h2>
+<div class="step-text">
+<p>As a central part of JavaScript, <strong>asynchronous programming</strong> enables developers to create code that can manage various activities simultaneously. Yet, managing asynchronous code may be a challenging task, more importantly when it comes to code readability and error handling. Promise-based APIs have complex code structures and, as a result, poor code readability as the codebases become large. <strong>async/await</strong> makes asynchronous programming much easier, and in this topic, you'll see how you can benefit from using <code class="language-javascript">async/await</code> syntaxes.</p>
+<h5 id="what-is-asyncawait">What is async/await?</h5>
+<p>The <code class="language-javascript">async/await</code> syntax in JavaScript was introduced in ES2017 to simplify the asynchronous code. You already know about promises in JavaScript that also simplify asynchronous code. Similarly, <code class="language-javascript">async/await</code> was introduced as a new feature in JavaScript. It is built on top of promises, which allows you to execute asynchronous code more efficiently.</p>
+<p>The keywords <code class="language-javascript">async</code> and <code class="language-javascript">await</code> allow us to create asynchronous functions that will always return a <code class="language-javascript">Promise</code>, without having to explicitly create a <code class="language-javascript">new Promise</code> and ending up with <code class="language-javascript">Promises chaining</code>. You can create asynchronous code with <code class="language-javascript">async/await</code> that reads and operates like synchronous code, making it simpler to understand. The <code class="language-javascript">await</code> keyword is used to delay the execution of the next line of code until the <code class="language-javascript">Promise</code> returned by an async function resolves. As a result, your code will be better organized, more readable, and simpler to modify. Let's look at a few examples to understand the <code class="language-javascript">async</code> and <code class="language-javascript">await</code> keywords better.</p>
+<h5 id="async-function">Async function</h5>
+<p>Let's first learn how to use the <code class="language-javascript">async</code> keyword. We use it before a function declaration, like this: <code class="language-javascript">async function</code>. This way we define that our function will be an asynchronous function and it will return a <code class="language-javascript">Promise</code>. Let's take a simple example:</p>
+<pre><code class="language-javascript">async function myFunc() {
+  return "Hello, Async!";
+}
+
+console.log(myFunc()); // Promise { 'Hello, Async!' }</code></pre>
+<p>As you can see in the code above, we get a resolved promise, so it is not necessary to explicitly return a <code class="language-javascript">Promise</code> because the return of an async function will always be a <code class="language-javascript">Promise</code>. As we mentioned earlier, when you call an async function it returns a <code class="language-javascript">Promise</code> that resolves with the value returned by the function or rejects with an error. Now, let's take an example and test if the above function <code class="language-javascript">myFunc</code> actually resolved the promise:</p>
+<pre><code class="language-javascript">async function myFunc() {
+  return "Hello, Async!";
+}
+
+myFunc()
+  .then((response) =&gt; console.log(response))
+  .catch((error) =&gt; console.log(error));
+
+// Hello, Async!
+</code></pre>
+<p>So, from the examples above, we can assure that the <code class="language-javascript">async</code> keyword returns a promise. We also tested the same by using the <code class="language-javascript">.then()</code> and <code class="language-javascript">.catch()</code> methods on <code class="language-javascript">myFunc</code> and, because the promise was resolved, the code gave an output.</p>
+<h5 id="await-operator">Await operator</h5>
+<p>You can see the principal advantage of using <code class="language-javascript">async</code> function when you combine it with <code class="language-javascript">await</code> operator. Instead of using <code class="language-javascript">promise.then()</code> we can use <code class="language-javascript">await</code> to handle Promise results. We use the keyword <code class="language-javascript">await</code> always within an asynchronous function and place it before the return of an asynchronous function, which is easier. For example,</p>
+<pre><code class="language-javascript">async function myFunc() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
+  return data;
+}
+</code></pre>
+<p>In the example above, we have a function named myFunc() which is an async function that fetches the data from an API and the specific result is logged into the console. As you can see the await keyword is used to wait for the response and data to resolve before logging it into the console.</p>
+<h5 id="error-handling-with-trycatch">Error handling with try/catch</h5>
+<p>It is important to handle mistakes correctly while working with asynchronous programming. The keywords <code class="language-javascript">try</code> and <code class="language-javascript">catch</code> can be used to handle errors in asynchronous functions. Let's take an example to understand how you can handle errors using <code class="language-javascript">try</code> and <code class="language-javascript">catch</code> keywords.</p>
+<pre><code class="language-javascript">async function findUser(username) {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${username}`
+    );
+    const user = await response.json();
+    console.log(user);
+  } catch (error) {
+    console.log(`Failed to fetch user: ${error.message}`);
+  }
+}</code></pre>
+<p>In this example, we have added a <code class="language-javascript">try</code> and <code class="language-javascript">catch</code> block to the <code class="language-javascript">findUser</code> function to handle errors. If an error occurs during the execution of the function, the <code class="language-javascript">catch</code> block is executed, and an error message is thrown. Similarly, if no error occurs, the <code class="language-javascript">try</code> block is executed and the function will return the output.</p>
+<h5 id="benefits-of-asyncawait">Benefits of async/await</h5>
+<p><code class="language-javascript">async/await</code> provides a number of advantages that make it an essential feature for developers.</p>
+<ul>
+<li>One of the most important advantages is that <code class="language-javascript">async/await</code> makes error handling in asynchronous code easier. Error handling using standard callbacks or <code class="language-javascript">Promises</code> can become complicated and difficult to maintain. But<code class="language-javascript"> async/await</code> simplifies error handling with <code class="language-javascript">try/catch</code> blocks. This makes the code easier to read and comprehend.</li>
+<li>Another advantage of <code class="language-javascript">async/await</code> is that it makes code more understandable. Because of the numerous callbacks and chained <code class="language-javascript">Promises</code>, asynchronous programming might be difficult to follow. You can write code that appears like synchronous code, with simple and compact syntax, <code class="language-javascript">using async/await</code>. This simplifies the understanding of what the code does and how it works.</li>
+</ul>
+<h5 id="conclusion">Conclusion</h5>
+<p><code class="language-javascript">async/await</code> is a powerful JavaScript feature that manages and simplifies the asynchronous code. With the help of <code class="language-javascript">async/await</code> you can build asynchronous code that looks and operates like synchronous code, which makes it easier to read and comprehend. It also helps simplify error handling, understand your code more easily, and write cleaner code that is easier to manage and maintain.</p>
+</div>

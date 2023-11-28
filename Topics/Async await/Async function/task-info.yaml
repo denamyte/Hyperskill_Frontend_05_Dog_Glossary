@@ -1,0 +1,20 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: "<code>function async yourFunction() { return \"Hello World!\"; }</code>"
+  - text: "<code>async function yourFunction() { return \"Hello World!\"; }</code>"
+  - text: "<code>function yourFunction(callback) async { callback(\"Hello World!\");\
+    \ }</code>"
+  - text: "<code>async function yourFunction(callback) { callback(\"Hello World!\");\
+    \ }</code>"
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27934#comment
+status: Solved
+record: -1
+local_check: false
