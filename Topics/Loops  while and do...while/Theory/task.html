@@ -1,0 +1,28 @@
+<h2>Loops: while and do...while</h2>
+<div class="step-text">
+<p></p><p>Perhaps you've made a cup of coffee before diving into this topic, so you're probably sipping it as you read. Meanwhile, outside, weather conditions might be changing; it could have started raining after a cloudy morning. As it rains, pavements get wet and puddles grow. All these scenarios based on the "While...(condition)" structure, illustrate the concept of <code class="language-javascript">while</code> loops.</p><p>A <strong>loop</strong> is a segment of code that repeats a specified number of times. <code class="language-javascript">While</code> loops continue as long as a certain condition remains true, like "while you are reading the topic", or "while it is raining". Some conditions are always true. For example, if you write <code class="language-javascript">while (5 &lt; 6)</code>, this results in an <strong>infinite loop</strong>, as <code class="language-javascript">5</code> is perennially less than <code class="language-javascript">6</code>. Conversely, other conditions lead to a finite number of loop iterations.</p> <h5 id="while-syntax">While syntax</h5><p>The <code class="language-javascript">while</code> loop takes the following structure:</p><pre><code class="language-javascript">while (condition) {
+...
+}</code></pre><p>This loop runs as long as the <code class="language-javascript">condition == true</code>. Once the stated condition turns <em>false</em>, the loop terminates.</p><p>Check out the example below:</p><pre><code class="language-javascript">let n = 2;
+while (n &lt; 100) {
+    n = n * n;
+    console.log(n);
+}</code></pre><p>Ultimately, we get this result:</p><pre><code class="language-javascript">4
+16
+256</code></pre><p>How did this happen? Let's go through each iteration step by step.</p><p>In the beginning, the variable <code class="language-javascript">n = 2</code>. We immediately check if <code class="language-javascript">n &lt; 100</code> upon entering the while loop. This condition is true, which brings us into the loop. Next, we square <code class="language-javascript">n</code> and output the result, which is why we get <code class="language-javascript">4</code> on the first line.</p><p>In the second iteration, we check the condition again before running the loop. <code class="language-javascript">4 * 4 = 16</code>: that's the second line. As <code class="language-javascript">16 &lt; 100</code> is true, we execute the loop for the third time, multiplying <code class="language-javascript">16</code> by itself to get <code class="language-javascript">256</code>. However, before we start the loop for the fourth time, we see that <code class="language-javascript">256</code> is no longer less than <code class="language-javascript">100</code>, bringing an end to the loop.</p> <h5 id="dowhile-syntax">Do...while syntax</h5><p>There is another kind of loop that continues as long as the conditions are correct: the <code class="language-javascript">do...while</code> loop. It looks like this:</p><pre><code class="language-javascript">do {
+...
+} while (condition);</code></pre><p>The previous example can be rephrased using the <code class="language-javascript">do...while</code> structure:</p><pre><code class="language-javascript">let n = 2;
+do {
+    n = n * n;
+    console.log(n);
+} while (n &lt; 100);</code></pre><p>It's easy to see that the output will be exactly the same with the one from <code class="language-javascript">while</code>:</p><pre><code class="language-javascript">4
+16
+256</code></pre><p>So, what separates these two, and why do we need two types of loops providing the same result?</p> <h5 id="while-vs-dowhile-loops">While <em>Vs</em> do...while loops</h5><p>There's indeed a difference. The following example will clarify it.</p><pre><code class="language-javascript">let n = 256;
+while (n &lt; 100) {
+    n = n * n;
+    console.log(n);
+}</code></pre><p>What will be output? Absolutely nothing! The loop only starts if the condition is true. So, what happens with <code class="language-javascript">do...while</code>?</p><pre><code class="language-javascript">let n = 256;
+do {
+    n = n * n;
+    console.log(n);
+} while (n &lt; 100);</code></pre><p>You'll find that the console displays <code class="language-javascript">65536</code>!</p><p>The difference lies in when the check occurs. With <code class="language-javascript">do...while</code>, the condition evaluation happens <em>after</em> executing the first iteration. This means the loop will run at least once, even if the initial condition is false.</p> <h5 id="conclusion">Conclusion</h5><p>In this topic, we've introduced a new concept: loops. We've explored two types of loops, namely <code class="language-javascript">while</code> and <code class="language-javascript">do...while</code>, and highlighted their differences. We've also learned that a perpetual true condition can lead to an infinite loop.</p><p>It's time for you to apply what you've learned. Go ahead and challenge yourself!</p>
+</div>

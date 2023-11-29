@@ -4,3 +4,5 @@ content:
   - Loops  for and for...in
   - " then ,  catch  and  finally  methods"
   - Async await
+  - Loops  while and do...while
+  - Template literals
