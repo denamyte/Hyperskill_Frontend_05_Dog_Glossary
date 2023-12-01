@@ -1,17 +1,26 @@
 const RANDOM_IMG_URL = "https://dog.ceo/api/breeds/image/random";
-const BREED_RANDOM_IMG = breed => `https://dog.ceo/api/breed/${breed}/images/random`;
-const BREED_NOT_FOUND_P = document.createElement("p");
-BREED_NOT_FOUND_P.textContent = "Breed not found!";
-BREED_NOT_FOUND_P.id = "breed-warning";
+const ALL_BREEDS_URL = " https://dog.ceo/api/breeds/list/all";
+const NO_BREED = "Breed not found!";
+const NO_SUB_BREED = "No sub-breeds found!";
+const warningP = text => {
+    const p = document.createElement('p');
+    p.id = 'breed-warning';
+    p.textContent = text;
+    return p;
+}
+const randomImgUrl = breed => `https://dog.ceo/api/breed/${breed}/images/random`;
+const subBreedUrl = breed => `https://dog.ceo/api/breed/${breed}/list`;
+const getInputBreed = () => document.getElementById('input-breed').value.toLowerCase();
 
 function main() {
-    addClickListener("button-random-dog", putRandomImage)
-    addClickListener("button-show-breed", putBreedImage)
+    addClickListener('button-random-dog', putRandomImage)
+    addClickListener('button-show-breed', putBreedImage)
+    addClickListener('button-show-sub-breed', showSubBreed)
 }
 
 function addClickListener(elemId, func) {
     let elem = document.getElementById(elemId);
-    elem && elem.addEventListener("click", func);
+    elem && elem.addEventListener('click', func);
 }
 
 function putRandomImage() {
@@ -19,8 +28,8 @@ function putRandomImage() {
 }
 
 function putBreedImage() {
-    const breed = document.getElementById("input-breed").value.toLowerCase();
-    putImage(BREED_RANDOM_IMG(breed), true)
+    const breed = getInputBreed();
+    putImage(randomImgUrl(breed), true)
 }
 
 /**
@@ -32,14 +41,14 @@ function putImage(url, showWarning = false) {
     fetch(url)
         .then(response => {
             if (response.ok) return response.json();
-            else throw new Error("The response failed")
+            else throw new Error("The response failed");
         })
         .then(json => {
-            const img = document.createElement("img");
+            const img = document.createElement('img');
             img.src = json['message'];
-            addExclNode("content", img)
+            addExclNode('content', img);
         })
-        .catch(_ => showWarning && addExclNode("content", BREED_NOT_FOUND_P))
+        .catch(_ => showWarning && addExclNode('content', warningP(NO_BREED)))
 }
 
 /**
@@ -50,7 +59,30 @@ function putImage(url, showWarning = false) {
 function addExclNode(elemId, node) {
     const content = document.getElementById(elemId);
     content.innerHTML = "";
-    content.append(node)
+    content.append(node);
+    return true;
+}
+
+async function showSubBreed() {
+    const res = await fetch(ALL_BREEDS_URL);
+    const json = await res.json();
+    const breeds = json['message'];
+    const breed = getInputBreed();
+    if (breed in breeds) {
+        const subBreeds = breeds[breed];
+        subBreeds.length && addExclNode('content', orderedList(subBreeds))
+            || addExclNode('content', warningP(NO_SUB_BREED))
+    } else {
+        addExclNode('content', warningP(NO_BREED))
+    }
+}
+
+function orderedList(arr) {
+    const list = document.createElement('ol');
+    for (const item of arr) {
+        list.insertAdjacentHTML('beforeend', `<li>${item}</li>`)
+    }
+    return list;
 }
 
 main()
