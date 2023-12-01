@@ -1,0 +1,17 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: |-
+      function reverse(arr) {
+          //write your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18291#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Fri, 01 Dec 2023 21:54:41 UTC"
+record: -1
+submission_language: javascript
