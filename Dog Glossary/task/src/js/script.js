@@ -12,10 +12,16 @@ const randomImgUrl = breed => `https://dog.ceo/api/breed/${breed}/images/random`
 const subBreedUrl = breed => `https://dog.ceo/api/breed/${breed}/list`;
 const getInputBreed = () => document.getElementById('input-breed').value.toLowerCase();
 
+const LISTENERS = {
+    'button-random-dog': putRandomImage,
+    'button-show-breed': putBreedImage,
+    'button-show-sub-breed': showSubBreed,
+    'button-show-all': showAllBreeds,
+}
+
 function main() {
-    addClickListener('button-random-dog', putRandomImage)
-    addClickListener('button-show-breed', putBreedImage)
-    addClickListener('button-show-sub-breed', showSubBreed)
+    for (const id in LISTENERS)
+        addClickListener(id, LISTENERS[id])
 }
 
 function addClickListener(elemId, func) {
@@ -38,23 +44,47 @@ function putBreedImage() {
  * @param {boolean} showWarning - A flag, whether to show a warning if the fetch method fails
  */
 function putImage(url, showWarning = false) {
-    fetch(url)
-        .then(response => {
-            if (response.ok) return response.json();
-            else throw new Error("The response failed");
-        })
-        .then(json => {
+    fetchUrl(url)
+        .then(src => {
             const img = document.createElement('img');
-            img.src = json['message'];
+            img.src = src;
             addExclNode('content', img);
         })
         .catch(_ => showWarning && addExclNode('content', warningP(NO_BREED)))
 }
 
+async function showSubBreed() {
+    let breeds = await fetchUrl(ALL_BREEDS_URL);
+    const breed = getInputBreed();
+    if (breed in breeds) {
+        const subBreeds = breeds[breed];
+        subBreeds.length && addExclNode('content', createList(subBreeds, "ol"))
+            || addExclNode('content', warningP(NO_SUB_BREED))
+    } else {
+        addExclNode('content', warningP(NO_BREED))
+    }
+}
+
+async function showAllBreeds() {
+    let breeds = await fetchUrl(ALL_BREEDS_URL);
+    const list = document.createElement('ol');
+    for (const breed in breeds) {
+        const breedEl = document.createElement('li');
+        breedEl.textContent = breed;
+
+        const subBreeds = breeds[breed];
+        if (subBreeds.length) {
+            breedEl.appendChild(createList(subBreeds, 'ul'));
+        }
+        list.appendChild(breedEl);
+    }
+    addExclNode('content', list)
+}
+
 /**
  * Add a node exclusively into an element.
  * @param {string} elemId The element id
- * @param {Node} node The node to be added
+ * @param {HTMLElement} node The node to be added
  */
 function addExclNode(elemId, node) {
     const content = document.getElementById(elemId);
@@ -63,22 +93,14 @@ function addExclNode(elemId, node) {
     return true;
 }
 
-async function showSubBreed() {
-    const res = await fetch(ALL_BREEDS_URL);
-    const json = await res.json();
-    const breeds = json['message'];
-    const breed = getInputBreed();
-    if (breed in breeds) {
-        const subBreeds = breeds[breed];
-        subBreeds.length && addExclNode('content', orderedList(subBreeds))
-            || addExclNode('content', warningP(NO_SUB_BREED))
-    } else {
-        addExclNode('content', warningP(NO_BREED))
-    }
+async function fetchUrl(url) {
+    let res = await fetch(url);
+    if (res.ok) return (await res.json())['message'];
+    throw new Error("The query failed");
 }
 
-function orderedList(arr) {
-    const list = document.createElement('ol');
+function createList(arr, listTag) {
+    const list = document.createElement(listTag);
     for (const item of arr) {
         list.insertAdjacentHTML('beforeend', `<li>${item}</li>`)
     }
