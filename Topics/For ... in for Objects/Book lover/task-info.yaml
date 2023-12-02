@@ -1,0 +1,22 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    text: |-
+      let library = {
+          books: {
+              "first": "Brothers Karamazov",
+              "second": "The Catcher in the Rye"
+          }
+      };
+      for (let object in library) {
+      //your code
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/22788#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sat, 02 Dec 2023 12:17:55 UTC"
+record: -1
+submission_language: javascript

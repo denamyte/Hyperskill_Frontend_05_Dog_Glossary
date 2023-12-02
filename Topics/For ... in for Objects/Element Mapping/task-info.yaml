@@ -1,0 +1,23 @@
+type: matching
+captions:
+  - "for (<b>let i</b> ...) {"
+  - for (let i in <b>smth</b>)
+  - "console.log(smth[i]);"
+options:
+  - Printing the value of an object to the console
+  - Variable to which the key will be written on each iteration of the loop
+  - The loop is traversed by this variable's keys
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/22786#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
