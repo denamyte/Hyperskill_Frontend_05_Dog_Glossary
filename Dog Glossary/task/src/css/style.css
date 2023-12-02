@@ -1,6 +1,53 @@
-#content > img {
-    width: 50%;
-    margin: 5px 0 0;
+body {
+    font-family: arial, serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+}
+
+#controls button, #controls input {
+    width: 17%;
+    height: 42px;
+    border-radius: 5px;
+    border-style: solid;
+    margin: 0 5px;
+    border-color: #007bff;
+}
+
+#controls input {
+    padding: 0 15px;
+}
+
+#controls button {
+    color: white;
+    height: 46px;
+    background-color: #007bff;
+}
+
+#content {
+    width: 100%;
+    background-color: #cce5ff;
+    height: 50vw;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+}
+
+#content img {
+    max-height: 90%;
+    border-radius: 10px;
+    border: 3px solid #007bff;
+}
+
+#content img, #content p {
+    align-self: center;
 }
 
 #breed-warning {
